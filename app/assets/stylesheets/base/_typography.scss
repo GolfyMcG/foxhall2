@@ -1,10 +1,6 @@
 body {
   @include font-feature-settings("kern", "liga", "pnum");
-  -webkit-font-smoothing: antialiased;
-  color: $base-font-color;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  @include body-font;
 }
 
 h1,
@@ -13,14 +9,50 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font-family;
-  font-size: $base-font-size;
-  line-height: $heading-line-height;
-  margin: 0 0 $small-spacing;
+  @include header-font;
+}
+
+h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+
+  @include media($medium-screen) {
+    font-size: 2.6em;
+  }
+}
+
+h2 {
+  font-family: $serif;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4em;
+  margin-bottom: 1.1em;
+
+  @include media($medium-screen) {
+    font-size: 1.3em;
+  }
+}
+
+h3 {
+  font-family: $serif;
+  font-size: 1.4em;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin-bottom: 0.4em;
 }
 
 p {
+  font-size: 1.05em;
   margin: 0 0 $small-spacing;
+}
+
+p.date {
+  color: transparentize($base-font-color, 0.6);
+  font-size: 0.9em;
+  font-style: italic;
+  margin-bottom: 0.3em;
 }
 
 a {
@@ -41,11 +73,12 @@ a {
 }
 
 hr {
-  border-bottom: $base-border;
+  border-bottom: 1px solid $light-gray;
   border-left: none;
   border-right: none;
   border-top: none;
   margin: $base-spacing 0;
+  width: 3em;
 }
 
 img,
